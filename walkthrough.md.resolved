@@ -1,0 +1,30 @@
+# Walkthrough — Migração para Supabase Auth
+
+## O que foi feito
+
+A autenticação foi migrada de credenciais hardcoded em memória ([credentials.ts](file:///c:/Users/Rubens%20Paiva/Downloads/rba---pipe/src/credentials.ts)) para o **Supabase Auth**, com persistência real, sessões JWT e troca de senha via API.
+
+### Arquivos modificados
+
+| Arquivo | Mudança |
+|---------|---------|
+| [authService.ts](file:///c:/Users/Rubens%20Paiva/Downloads/rba---pipe/src/services/authService.ts) | **[NOVO]** Serviço de auth: login, logout, troca de senha, criar/desativar assessor |
+| [App.tsx](file:///c:/Users/Rubens%20Paiva/Downloads/rba---pipe/App.tsx) | Sessão persistente + loading spinner ao iniciar |
+| [LandingPage.tsx](file:///c:/Users/Rubens%20Paiva/Downloads/rba---pipe/components/LandingPage.tsx) | Login via Supabase Auth (removido campo nome, agora vem do perfil) |
+| [Dashboard.tsx](file:///c:/Users/Rubens%20Paiva/Downloads/rba---pipe/components/Dashboard.tsx) | Troca de senha, adicionar/remover assessor via Supabase |
+| [GUIA_SUPABASE_AUTH.md](file:///c:/Users/Rubens%20Paiva/Downloads/rba---pipe/GUIA_SUPABASE_AUTH.md) | **[NOVO]** Guia passo-a-passo para configurar o Supabase |
+| [src/credentials.ts](file:///c:/Users/Rubens%20Paiva/Downloads/rba---pipe/src/credentials.ts) | **[REMOVIDO]** Substituído pelo authService + tabela `profiles` |
+
+### Funcionalidades
+
+- ✅ Login com matrícula XP + senha (via Supabase Auth)
+- ✅ Sessão persistente (recarregar a página mantém o login)
+- ✅ Troca de senha (mínimo 6 caracteres, validação com senha atual)
+- ✅ Adicionar assessor (cria usuário no Supabase + perfil)
+- ✅ Desativar assessor (marca `active = false` no perfil)
+- ✅ Loading spinner enquanto verifica sessão
+- ✅ Build sem erros (`npm run build` ✓)
+
+## Próximo passo
+
+Siga o [GUIA_SUPABASE_AUTH.md](file:///c:/Users/Rubens%20Paiva/Downloads/rba---pipe/GUIA_SUPABASE_AUTH.md) para configurar o Supabase Dashboard.
