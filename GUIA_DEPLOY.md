@@ -169,10 +169,7 @@ RewriteRule . /index.html [L]
 
 ---
 
-## ⚠️ Considerações de Segurança
+## ✅ Segurança
 
-> [!WARNING]
-> As credenciais de login (arquivo `credentials.ts`) estão **hardcoded no frontend**. Isso significa que qualquer pessoa que inspecionar o código JavaScript no navegador poderá ver as senhas. Para uma versão de produção segura, considere:
-> - Migrar a autenticação para o **Supabase Auth**
-> - Armazenar credenciais no banco de dados com senhas hasheadas
-> - Implementar autenticação via API com tokens JWT
+> [!NOTE]
+> A autenticação agora usa **Supabase Auth** com sessões JWT. As senhas são armazenadas de forma segura no Supabase. Consulte o `GUIA_SUPABASE_AUTH.md` para a configuração da tabela `profiles` e criação dos usuários.
